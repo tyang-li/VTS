@@ -98,85 +98,6 @@ parse_gpu_list() {
     echo "${gpu_list[@]}"
 }
 
-# Map GPU index to NUMA node for host memory allocation.
-# Default BMG platform mapping: GPUs 0-7 -> socket/NUMA node 0, GPUs 8-15 -> socket/NUMA node 1.
-# Override GPU_NUMA_SPLIT if a platform uses a different split point.
-get_numa_node_for_gpu() {
-    local gpu_id=$1
-
-    # Optional explicit mapping override, e.g. GPU_NUMA_MAP="0:0,1:0,8:0,9:1"
-    if [[ -n "$GPU_NUMA_MAP" ]]; then
-        local pair
-        for pair in ${GPU_NUMA_MAP//,/ }; do
-            local mapped_gpu=${pair%%:*}
-            local mapped_node=${pair##*:}
-            if [[ "$mapped_gpu" == "$gpu_id" && "$mapped_node" =~ ^[0-9]+$ ]]; then
-                echo "$mapped_node"
-                return
-            fi
-        done
-    fi
-
-    # Resolve GPU index to DRM card index via xpu-smi when available.
-    # This avoids assuming GPU index == card index on systems where card0
-    # is reserved and compute GPUs start at card1.
-    local drm_card_index="$gpu_id"
-    if command -v xpu-smi >/dev/null 2>&1; then
-        local mapped_card
-        mapped_card=$(xpu-smi discovery 2>/dev/null | awk -F'|' '
-            /^\|[[:space:]]*[0-9]+[[:space:]]*\|/ {
-                gsub(/ /, "", $2)
-                dev_id=$2
-            }
-            /DRM Device:/ {
-                if (dev_id != "" && match($0, /card[0-9]+/)) {
-                    card = substr($0, RSTART + 4, RLENGTH - 4)
-                    print dev_id ":" card
-                }
-            }
-        ' | awk -F: -v want="$gpu_id" '$1 == want { print $2; exit }')
-
-        if [[ "$mapped_card" =~ ^[0-9]+$ ]]; then
-            drm_card_index="$mapped_card"
-        fi
-    fi
-
-    # Prefer kernel-reported locality for the resolved DRM card.
-    local sysfs_numa_file="/sys/class/drm/card${drm_card_index}/device/numa_node"
-    if [[ -r "$sysfs_numa_file" ]]; then
-        local kernel_node
-        kernel_node=$(tr -d '[:space:]' < "$sysfs_numa_file")
-        if [[ "$kernel_node" =~ ^[0-9]+$ ]] && [[ -d "/sys/devices/system/node/node${kernel_node}" ]]; then
-            echo "$kernel_node"
-            return
-        fi
-    fi
-
-    # Fallback split when sysfs locality is unavailable.
-    local split=${GPU_NUMA_SPLIT:-8}
-
-    if (( gpu_id < split )); then
-        echo 0
-    else
-        echo 1
-    fi
-}
-
-run_with_gpu_numa_policy() {
-    local gpu_id=$1
-    shift
-    local numa_node
-    numa_node=$(get_numa_node_for_gpu "$gpu_id")
-
-    if command -v numactl >/dev/null 2>&1 && [[ -d "/sys/devices/system/node/node${numa_node}" ]]; then
-        echo "NUMA policy: GPU $gpu_id -> socket/NUMA node $numa_node memory"
-        numactl --cpunodebind="$numa_node" --membind="$numa_node" "$@"
-    else
-        echo "Warning: numactl or NUMA node $numa_node unavailable; running GPU $gpu_id without NUMA binding" >&2
-        "$@"
-    fi
-}
-
 # Function to run bandwidth test on a single GPU
 run_bw_test() {
     local gpu_id=$1
@@ -205,8 +126,8 @@ run_bw_test() {
         esac
         
         echo "Running ze_bandwidth on GPU $gpu_id (test=$ze_test_type, engine_group=${engine_args#-g }, iterations=$iterations, size=$size)"
-        echo "Command: numactl --cpunodebind=$(get_numa_node_for_gpu "$gpu_id") --membind=$(get_numa_node_for_gpu "$gpu_id") ./ze_bandwidth $engine_args -d $gpu_id -i $iterations -s $size -t $ze_test_type $additional_args"
-        run_with_gpu_numa_policy "$gpu_id" ./ze_bandwidth $engine_args -d $gpu_id -i $iterations -s $size -t $ze_test_type $additional_args 2>&1
+        echo "Command: ./ze_bandwidth $engine_args -d $gpu_id -i $iterations -s $size -t $ze_test_type $additional_args"
+        ./ze_bandwidth $engine_args -d $gpu_id -i $iterations -s $size -t $ze_test_type $additional_args 2>&1
     elif [[ "$tool" == "memory_benchmark_l0" ]]; then
         # For UsmCopyConcurrentMultipleBlits test, direction is controlled by blitter parameters only
         # Map engine to blitter bit masks for UsmCopyConcurrentMultipleBlits
@@ -229,11 +150,11 @@ run_bw_test() {
         
         echo "Running memory_benchmark_l0 on GPU $gpu_id (direction=$direction, engine=$engine, iterations=$iterations, size=$size)"
         if [[ "$engine" == "compute" ]]; then
-            echo "Command: numactl --cpunodebind=$(get_numa_node_for_gpu "$gpu_id") --membind=$(get_numa_node_for_gpu "$gpu_id") ./memory_benchmark_l0 --test=UsmConcurrentCopy --size=$size --h2dEngine=CCS0 --d2hEngine=BCS --withCopyOffload=0 $additional_args"
-            run_with_gpu_numa_policy "$gpu_id" ./memory_benchmark_l0 --test=UsmConcurrentCopy --size=$size --h2dEngine=CCS0 --d2hEngine=BCS --withCopyOffload=0 $additional_args 2>&1
+            echo "Command: ./memory_benchmark_l0 --test=UsmConcurrentCopy --size=$size --h2dEngine=CCS0 --d2hEngine=BCS --withCopyOffload=0 $additional_args"
+            ./memory_benchmark_l0 --test=UsmConcurrentCopy --size=$size --h2dEngine=CCS0 --d2hEngine=BCS --withCopyOffload=0 $additional_args 2>&1
         else
-            echo "Command: numactl --cpunodebind=$(get_numa_node_for_gpu "$gpu_id") --membind=$(get_numa_node_for_gpu "$gpu_id") ./memory_benchmark_l0 --l0DriverIndex=0 --l0DeviceIndex=$gpu_id --iterations=$iterations --test=UsmCopyConcurrentMultipleBlits --size=$size $blitter_args $additional_args"
-            run_with_gpu_numa_policy "$gpu_id" ./memory_benchmark_l0 --l0DriverIndex=0 --l0DeviceIndex=$gpu_id --iterations=$iterations --test=UsmCopyConcurrentMultipleBlits --size=$size $blitter_args $additional_args 2>&1
+            echo "Command: ./memory_benchmark_l0 --l0DriverIndex=0 --l0DeviceIndex=$gpu_id --iterations=$iterations --test=UsmCopyConcurrentMultipleBlits --size=$size $blitter_args $additional_args"
+            ./memory_benchmark_l0 --l0DriverIndex=0 --l0DeviceIndex=$gpu_id --iterations=$iterations --test=UsmCopyConcurrentMultipleBlits --size=$size $blitter_args $additional_args 2>&1
         fi
     fi
     
