@@ -3,6 +3,7 @@
 import os
 import glob
 import re
+import subprocess # nosec
 from common.utils import Utils
 from common import common_defs
 
@@ -182,7 +183,24 @@ class DeviceManager:
             
             try:
                 command_str = "./DGDiagTool -PCIE.UTIL.ListGfx"
-                output = self.utils.run_command_blocking(command_str)
+                try:
+                    output = self.utils.run_command_blocking(command_str)
+                except RuntimeError as run_error:
+                    # DGDiag can return non-zero even when it prints valid Index rows.
+                    # Fall back to raw subprocess output and continue parsing if present.
+                    result = subprocess.run(
+                        ["./DGDiagTool", "-PCIE.UTIL.ListGfx"],
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE,
+                        text=True,
+                        check=False,
+                    )
+                    output = result.stdout or ""
+                    if output.strip() == "":
+                        raise run_error
+                    self.logger.warning(
+                        f"DGDiag ListGfx returned {result.returncode}; parsing available output."
+                    )
                 
                 # Parse the output to extract Index values
                 instance_numbers = []

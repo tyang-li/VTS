@@ -12,6 +12,25 @@ class dgdiagBase(testBase):
             raise Exception("Couldn't get GPU instances")
         self.overall_test_result = 'PASS'  # Start optimistic
 
+    def resolve_selected_gpu_instances(self, inst_spec=None):
+        """Map user-facing VTS GPU IDs to DGDiag instance IDs.
+
+        VTS exposes GPUs as zero-based IDs across tests (0..N-1), while DGDiag
+        often enumerates the same devices as one-based instance IDs (1..N).
+        Resolve the user selection to both logical VTS GPU IDs and the DGDiag
+        instances that should be passed to DGDiagTool.
+        """
+        ordered_dginstances = sorted(self.dginstances)
+        requested_gpu_ids = self.resolve_selected_gpu_ids(
+            self.parsed_args.inst if inst_spec is None else inst_spec,
+            available_gpu_count=len(ordered_dginstances),
+        )
+        resolved_dginstances = [ordered_dginstances[gpu_id] for gpu_id in requested_gpu_ids]
+        self.logger.info(
+            f"Resolved VTS GPU IDs {requested_gpu_ids} to DGDiag instances {resolved_dginstances}"
+        )
+        return requested_gpu_ids, resolved_dginstances
+
     def prepareGpuCommands(self):
         # Ensure DGDiag is installed before running tests
         # Get version from platform definitions

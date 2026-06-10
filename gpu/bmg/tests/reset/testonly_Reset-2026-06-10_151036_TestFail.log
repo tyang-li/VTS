@@ -1,0 +1,1164 @@
+logfile created on Wed Jun 10 03:10:25 PM UTC 2026
+Wed Jun 10 03:10:25 PM UTC 2026 Reset Cycle Script Version 1.65
+Wed Jun 10 03:10:25 PM UTC 2026 FLR Timeout: 3
+Wed Jun 10 03:10:25 PM UTC 2026 SBR Timeout: 3
+Wed Jun 10 03:10:25 PM UTC 2026 Check b386ac88017e5d054219d2810a1f80238a4cd935f60b3bb7310e32d5b271e5cdb57a829352bddacce6bbfad7112c977a
+Wed Jun 10 03:10:25 PM UTC 2026 testonly reset test selected
+Wed Jun 10 03:10:25 PM UTC 2026 Baseboard Product Name: NF5468-M7-A0-R0-00
+Wed Jun 10 03:10:25 PM UTC 2026 Baseboard Version: YZMB-03370-101
+Wed Jun 10 03:10:25 PM UTC 2026 Baseboard Serial Number: MBR527S50013B70
+Wed Jun 10 03:10:25 PM UTC 2026 System BIOS Version: 06.09.01
+Wed Jun 10 03:10:25 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:25 PM UTC 2026 Reset count remaining = 0
+Wed Jun 10 03:10:25 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:25 PM UTC 2026 Devices found = 16
+Wed Jun 10 03:10:26 PM UTC 2026 Expected parent device count found.
+Wed Jun 10 03:10:26 PM UTC 2026 Device 0 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:0e:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 0
+	Region 0: Memory at 9e000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 1bf000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at 9f000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee00078  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 1 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:12:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 0
+	Region 0: Memory at 9c000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 1be000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at 9d000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee000b8  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 2 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:34:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 0
+	Region 0: Memory at b1000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 1ff000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at b2000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee00078  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 3 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:38:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 0
+	Region 0: Memory at af000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 1fe000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at b0000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee000b8  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 4 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:47:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 0
+	Region 0: Memory at bb000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 21f000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at bc000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee00078  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 5 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:4b:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 0
+	Region 0: Memory at b9000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 21e000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at ba000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee00098  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 6 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:5a:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 0
+	Region 0: Memory at c5000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 23f000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at c6000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee00078  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 7 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:5e:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 0
+	Region 0: Memory at c3000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 23e000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at c4000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee000b8  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 8 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:86:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 1
+	Region 0: Memory at d8000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 2ff000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at d9000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee00078  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 9 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:8a:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 1
+	Region 0: Memory at d6000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 2fe000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at d7000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee000b8  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 10 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:ae:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 1
+	Region 0: Memory at e8000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 33f000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at e9000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee00078  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 11 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:b2:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 1
+	Region 0: Memory at e6000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 33e000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at e7000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee000b8  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 12 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:c2:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 1
+	Region 0: Memory at f0000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 35f000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at f1000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee00078  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 13 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:c6:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 1
+	Region 0: Memory at ee000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 35e000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at ef000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee000b8  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 14 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:d6:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 1
+	Region 0: Memory at f8000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 37f000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at f9000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee00078  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Device 15 lspci:
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+0000:da:00.0 VGA compatible controller: Intel Corporation Device e211 (prog-if 00 [VGA controller])
+	Subsystem: Zycoo Co., Ltd Device 806c
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 32 bytes
+	NUMA node: 1
+	Region 0: Memory at f6000000 (64-bit, non-prefetchable) [size=16M]
+	Region 2: Memory at 37e000000000 (64-bit, prefetchable) [size=32G]
+	Expansion ROM at f7000000 [disabled] [size=2M]
+	Capabilities: [40] Vendor Specific Information: Len=0c <?>
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq-
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <64ns, L1 <1us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk-
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 2.5GT/s, Width x1
+			TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range B, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Not Supported, ExtFmt+ EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+ 10BitTagReq+ OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [ac] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 00000000fee000b8  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [d0] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [100 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [110 v1] Null
+	Capabilities: [200 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable-, Smallest Translation Unit: 00
+	Capabilities: [420 v1] Physical Resizable BAR
+		BAR 2: current size: 32GB, supported: 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB
+	Capabilities: [400 v1] Latency Tolerance Reporting
+		Max snoop latency: 40960ns
+		Max no snoop latency: 40960ns
+	Kernel modules: xe
+
+Wed Jun 10 03:10:26 PM UTC 2026 --------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 PCIe device tree for target devices:
+Wed Jun 10 03:10:26 PM UTC 2026 ------------------------------------------------------------------
+-+-[0000:0b]-+-01.0-[0c-0f]----00.0-[0d-0f]--+-01.0-[0e]----00.0  Intel Corporation Device [8086:e211]
+ |           |                               \-02.0-[0f]----00.0  Intel Corporation Device [8086:e2f7]
+ |           \-05.0-[10-13]----00.0-[11-13]--+-01.0-[12]----00.0  Intel Corporation Device [8086:e211]
+ |                                           \-02.0-[13]----00.0  Intel Corporation Device [8086:e2f7]
+ +-[0000:31]-+-01.0-[32-35]----00.0-[33-35]--+-01.0-[34]----00.0  Intel Corporation Device [8086:e211]
+ |           |                               \-02.0-[35]----00.0  Intel Corporation Device [8086:e2f7]
+ |           \-05.0-[36-39]----00.0-[37-39]--+-01.0-[38]----00.0  Intel Corporation Device [8086:e211]
+ |                                           \-02.0-[39]----00.0  Intel Corporation Device [8086:e2f7]
+ +-[0000:44]-+-01.0-[45-48]----00.0-[46-48]--+-01.0-[47]----00.0  Intel Corporation Device [8086:e211]
+ |           |                               \-02.0-[48]----00.0  Intel Corporation Device [8086:e2f7]
+ |           \-05.0-[49-4c]----00.0-[4a-4c]--+-01.0-[4b]----00.0  Intel Corporation Device [8086:e211]
+ |                                           \-02.0-[4c]----00.0  Intel Corporation Device [8086:e2f7]
+ +-[0000:57]-+-01.0-[58-5b]----00.0-[59-5b]--+-01.0-[5a]----00.0  Intel Corporation Device [8086:e211]
+ |           |                               \-02.0-[5b]----00.0  Intel Corporation Device [8086:e2f7]
+ |           \-05.0-[5c-5f]----00.0-[5d-5f]--+-01.0-[5e]----00.0  Intel Corporation Device [8086:e211]
+ |                                           \-02.0-[5f]----00.0  Intel Corporation Device [8086:e2f7]
+ +-[0000:83]-+-01.0-[84-87]----00.0-[85-87]--+-01.0-[86]----00.0  Intel Corporation Device [8086:e211]
+ |           |                               \-02.0-[87]----00.0  Intel Corporation Device [8086:e2f7]
+ |           \-05.0-[88-8b]----00.0-[89-8b]--+-01.0-[8a]----00.0  Intel Corporation Device [8086:e211]
+ |                                           \-02.0-[8b]----00.0  Intel Corporation Device [8086:e2f7]
+ +-[0000:ab]-+-01.0-[ac-af]----00.0-[ad-af]--+-01.0-[ae]----00.0  Intel Corporation Device [8086:e211]
+ |           |                               \-02.0-[af]----00.0  Intel Corporation Device [8086:e2f7]
+ |           \-05.0-[b0-b3]----00.0-[b1-b3]--+-01.0-[b2]----00.0  Intel Corporation Device [8086:e211]
+ |                                           \-02.0-[b3]----00.0  Intel Corporation Device [8086:e2f7]
+ +-[0000:bf]-+-01.0-[c0-c3]----00.0-[c1-c3]--+-01.0-[c2]----00.0  Intel Corporation Device [8086:e211]
+ |           |                               \-02.0-[c3]----00.0  Intel Corporation Device [8086:e2f7]
+ |           \-05.0-[c4-c7]----00.0-[c5-c7]--+-01.0-[c6]----00.0  Intel Corporation Device [8086:e211]
+ |                                           \-02.0-[c7]----00.0  Intel Corporation Device [8086:e2f7]
+ \-[0000:d3]-+-01.0-[d4-d7]----00.0-[d5-d7]--+-01.0-[d6]----00.0  Intel Corporation Device [8086:e211]
+             |                               \-02.0-[d7]----00.0  Intel Corporation Device [8086:e2f7]
+             \-05.0-[d8-db]----00.0-[d9-db]--+-01.0-[da]----00.0  Intel Corporation Device [8086:e211]
+                                             \-02.0-[db]----00.0  Intel Corporation Device [8086:e2f7]
+Wed Jun 10 03:10:26 PM UTC 2026 -----------------------------------------------------------------
+Wed Jun 10 03:10:26 PM UTC 2026 Starting health checks.
+Wed Jun 10 03:10:26 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:26 PM UTC 2026 Checking USP device host link speed and width.
+Wed Jun 10 03:10:27 PM UTC 2026 Device 0000:0c:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:27 PM UTC 2026 USP link 0000:0c:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:27 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:27 PM UTC 2026 Device 0000:10:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:27 PM UTC 2026 USP link 0000:10:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:27 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:27 PM UTC 2026 Device 0000:32:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:27 PM UTC 2026 USP link 0000:32:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:27 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:27 PM UTC 2026 Device 0000:36:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:27 PM UTC 2026 USP link 0000:36:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:27 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:27 PM UTC 2026 Device 0000:45:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:27 PM UTC 2026 USP link 0000:45:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:27 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:27 PM UTC 2026 Device 0000:49:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:27 PM UTC 2026 USP link 0000:49:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:27 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:27 PM UTC 2026 Device 0000:58:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:27 PM UTC 2026 USP link 0000:58:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:27 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:27 PM UTC 2026 Device 0000:5c:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:27 PM UTC 2026 USP link 0000:5c:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:27 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:27 PM UTC 2026 Device 0000:84:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:27 PM UTC 2026 USP link 0000:84:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:27 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:27 PM UTC 2026 Device 0000:88:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:27 PM UTC 2026 USP link 0000:88:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:27 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:27 PM UTC 2026 Device 0000:ac:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:27 PM UTC 2026 USP link 0000:ac:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:27 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:27 PM UTC 2026 Device 0000:b0:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:28 PM UTC 2026 USP link 0000:b0:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:28 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:28 PM UTC 2026 Device 0000:c0:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:28 PM UTC 2026 USP link 0000:c0:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:28 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:28 PM UTC 2026 Device 0000:c4:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:28 PM UTC 2026 USP link 0000:c4:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:28 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:28 PM UTC 2026 Device 0000:d4:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:28 PM UTC 2026 USP link 0000:d4:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:28 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:28 PM UTC 2026 Device 0000:d8:00.0 USP link status: Speed 32GT/s, Width x8
+Wed Jun 10 03:10:28 PM UTC 2026 USP link 0000:d8:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:28 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:28 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:28 PM UTC 2026 Checking Endpoint device host link speed and width.
+Wed Jun 10 03:10:28 PM UTC 2026 Device 0000:0e:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:28 PM UTC 2026 Endpoint link 0000:0e:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:28 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:28 PM UTC 2026 Device 0000:12:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:28 PM UTC 2026 Endpoint link 0000:12:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:28 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:28 PM UTC 2026 Device 0000:34:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:28 PM UTC 2026 Endpoint link 0000:34:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:28 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:28 PM UTC 2026 Device 0000:38:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:28 PM UTC 2026 Endpoint link 0000:38:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:28 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:28 PM UTC 2026 Device 0000:47:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:28 PM UTC 2026 Endpoint link 0000:47:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:28 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:28 PM UTC 2026 Device 0000:4b:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:28 PM UTC 2026 Endpoint link 0000:4b:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:28 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:28 PM UTC 2026 Device 0000:5a:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:28 PM UTC 2026 Endpoint link 0000:5a:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:28 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:28 PM UTC 2026 Device 0000:5e:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:29 PM UTC 2026 Endpoint link 0000:5e:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:29 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:86:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:29 PM UTC 2026 Endpoint link 0000:86:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:29 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:8a:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:29 PM UTC 2026 Endpoint link 0000:8a:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:29 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:ae:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:29 PM UTC 2026 Endpoint link 0000:ae:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:29 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:b2:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:29 PM UTC 2026 Endpoint link 0000:b2:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:29 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:c2:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:29 PM UTC 2026 Endpoint link 0000:c2:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:29 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:c6:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:29 PM UTC 2026 Endpoint link 0000:c6:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:29 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:d6:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:29 PM UTC 2026 Endpoint link 0000:d6:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:29 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:da:00.0 Endpoint link status: Speed 2.5GT/s, Width x1
+Wed Jun 10 03:10:29 PM UTC 2026 Endpoint link 0000:da:00.0 check shows speed and capability match.
+Wed Jun 10 03:10:29 PM UTC 2026 ***********************************************************************
+Wed Jun 10 03:10:29 PM UTC 2026 Check target device BARs.
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:0e:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:12:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:34:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:38:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:47:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:4b:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:5a:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:29 PM UTC 2026 Device 0000:5e:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:30 PM UTC 2026 Device 0000:86:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:30 PM UTC 2026 Device 0000:8a:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:30 PM UTC 2026 Device 0000:ae:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:30 PM UTC 2026 Device 0000:b2:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:30 PM UTC 2026 Device 0000:c2:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:30 PM UTC 2026 Device 0000:c6:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:30 PM UTC 2026 Device 0000:d6:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:30 PM UTC 2026 Device 0000:da:00.0 PCIe BAR0 16M and BAR2 32G  check PASSED.
+Wed Jun 10 03:10:30 PM UTC 2026 *******************************************************************************
+Wed Jun 10 03:10:30 PM UTC 2026 Checking device status with clinfo.
+Wed Jun 10 03:10:33 PM UTC 2026 Warning: clinfo did not detect devices. Confirm device driver is loaded.
+Wed Jun 10 03:10:33 PM UTC 2026 Confirm command clinfo -l works on the command line. Skipping check this time
+Wed Jun 10 03:10:34 PM UTC 2026 ******************************************
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 0.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 1.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 2.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 3.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 4.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 5.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 6.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 7.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 8.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 9.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 10.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 11.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 12.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 13.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 14.
+Wed Jun 10 03:10:34 PM UTC 2026 Launching ze_peak on device 15.
+Wed Jun 10 03:10:34 PM UTC 2026 ******************************************
+Wed Jun 10 03:10:36 PM UTC 2026 
+Wed Jun 10 03:10:36 PM UTC 2026 *****************************************
+Wed Jun 10 03:10:36 PM UTC 2026 Error: ZE_Peak test Failed on device 0.
+Wed Jun 10 03:10:36 PM UTC 2026 *****************************************
+Wed Jun 10 03:10:36 PM UTC 2026 
+Wed Jun 10 03:10:36 PM UTC 2026 See logs for details.
+Wed Jun 10 03:10:36 PM UTC 2026 ************
+Wed Jun 10 03:10:36 PM UTC 2026 Test Failed.
+Wed Jun 10 03:10:36 PM UTC 2026 ************
+Wed Jun 10 03:10:36 PM UTC 2026 
+To collect debug information, please run the infoCollect.sh script
+located in the Debug folder and submit the debug logs along with the failing
+test log to Intel for analysis.
+

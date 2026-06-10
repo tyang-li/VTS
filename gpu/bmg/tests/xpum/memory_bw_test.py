@@ -4,6 +4,7 @@
 
 import re
 from ..test_base import testBase
+from common.common_defs import STATUS_SUCCESS, STATUS_FAILED
 
 class testClass(testBase):
     def __init__(self, testNumber, logger, device_manager, parsed_args):
@@ -14,13 +15,31 @@ class testClass(testBase):
         super().add_arguments()
         
         # Add all arguments using the helper function
-        self.add_parser_argument('-inst', 'GPU Device instance', int, -1, 'inst')
-    
+        self.add_parser_argument('-inst', 'GPU Device instance spec: -1 (all), single ID (e.g. 0), range (e.g. 0-3), or list (e.g. 0,1,2)', str, '-1', 'inst')
+
     def prepareGpuCommands(self):
         self.gpuCommands = []
-        envVars = f''
-        self.gpuCommands.append(f'{envVars}xpu-smi diag -d {self.parsed_args.inst} --singletest 3')
+
+        try:
+            dgdiag_instances = self.device_manager.getGpuInstancesDGDiag()
+            available_gpu_count = len(dgdiag_instances) if dgdiag_instances else None
+            requested_instances = self.resolve_selected_gpu_ids(
+                self.parsed_args.inst,
+                available_gpu_count=available_gpu_count,
+            )
+        except ValueError as parse_error:
+            self.logger.error(f"Invalid -inst argument: {parse_error}")
+            return STATUS_FAILED
+
+        if requested_instances is None:
+            # All GPUs: let xpu-smi run without -d (or use device_manager if available)
+            self.gpuCommands.append('xpu-smi diag --singletest 3')
+        else:
+            for gpu_id in requested_instances:
+                self.gpuCommands.append(f'xpu-smi diag -d {gpu_id} --singletest 3')
+
         self.execution_dir = '.'
+        return STATUS_SUCCESS
 
     def parseResults(self):
         self.overall_test_result = 'FAIL'
@@ -54,5 +73,7 @@ class testClass(testBase):
 
         if self.overall_test_result == 'FAIL':
             self.logger.fail_msg('OVERALL TEST RESULT : FAIL')
+            return STATUS_FAILED
         else:
             self.logger.pass_msg('OVERALL TEST RESULT : PASS')
+            return STATUS_SUCCESS

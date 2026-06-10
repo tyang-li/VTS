@@ -1,5 +1,6 @@
 # Copyright (C) 2024-2026 Intel Corporation
 from ..test_base import testBase
+from common.common_defs import STATUS_SUCCESS, STATUS_FAILED
 import os
 import glob
 import shutil
@@ -66,6 +67,18 @@ class testClass(testBase):
     def prepareGpuCommands(self):
         super().prepareGpuCommands()
         self.gpuCommands = []
+
+        try:
+            dgdiag_instances = self.device_manager.getGpuInstancesDGDiag()
+            available_gpu_count = len(dgdiag_instances) if dgdiag_instances else None
+            requested_instances = self.resolve_selected_gpu_ids(
+                self.parsed_args.inst,
+                available_gpu_count=available_gpu_count,
+            )
+            self.logger.info(f'LMT -inst selector resolved to: {requested_instances if requested_instances is not None else "all detected GPUs"}')
+        except ValueError as parse_error:
+            self.logger.error(f"Invalid -inst argument: {parse_error}")
+            return STATUS_FAILED
         
         # Check if EOM is set on any GPU
         self.logger.subheader('Checking EOM status on all GPUs...')
@@ -79,7 +92,7 @@ class testClass(testBase):
         if self.eom_detected and not user_confirmed_eom:
             self.logger.warning('EOM detected on one or more GPUs - skipping all LMT test operations')
             self.execution_dir = '.'
-            return
+            return STATUS_FAILED
         elif self.eom_detected and user_confirmed_eom:
             self.logger.info('EOM detected but user confirmed continuation during PCIe downgrade check - proceeding with test')
 
@@ -113,13 +126,16 @@ class testClass(testBase):
         
         rx_num_list = self._normalize_rx_num()
         rx_nums = ' '.join(map(str, rx_num_list))
-        
-        self.gpuCommands.append(f'{sys.executable} {lmt_script_path} -n {self.parsed_args.numRepeats} -rn {rx_nums}')
+
+        inst_spec = self.parsed_args.inst if self.parsed_args.inst is not None else '-1'
+        self.gpuCommands.append(f'{sys.executable} {lmt_script_path} -n {self.parsed_args.numRepeats} -rn {rx_nums} -inst {inst_spec}')
+        return STATUS_SUCCESS
 
     def add_arguments(self):
         super().add_arguments()
         
         # Add all arguments using the helper function
+        self.add_parser_argument('-inst', 'GPU device selector. Supported forms: single (0), range (0-3), list (0,1,2,3), -1 for all devices', str, '-1', 'inst')
         self.add_parser_argument('-n', 'Number of repeats', int, 1, 'numRepeats')
         self.add_parser_argument(
             '-rn',
@@ -172,7 +188,7 @@ class testClass(testBase):
                 self.logger.warning('PCIe downgrade disable failed - setting test result to UNKNOWN')
             self.overall_test_result = 'UNKNOWN'
             self.logger.info('OVERALL TEST RESULT : UNKNOWN')
-            return
+            return STATUS_FAILED
         
         # Get path to LMT results directory
         current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -262,8 +278,9 @@ class testClass(testBase):
         self.logger.warning('The PCIe Lane Margin Test may have altered hardware state.')
         self.logger.warning('A reboot ensures complete system stability and driver recovery.')
         self.logger.warning('=' * 80)
-        
-        return
 
+        if self.overall_test_result == 'PASS':
+            return STATUS_SUCCESS
+        return STATUS_FAILED
 
 
