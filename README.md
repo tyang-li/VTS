@@ -80,7 +80,7 @@ sudo python3 start_vts.py -tn 2 -l medium
 **Description:** Advanced PCIe bandwidth testing with multiple tools and modes.
 
 **Parameters:**
-- `-inst STR` : GPU device selector. Supported forms: single (`0`), range (`0-3`), list (`0,1,2,3`), `-1` for all devices (default: -1)
+- `-inst STR` : GPU device selector. Supported forms: single (`0`), range (`0-3`), list (`0,1,2,3`), mixed (`0-3,5,7-8`), `-1` for all devices (default: -1)
 - `-mode STR` : Execution mode: serial, parallel, all (default: all)  
 - `-dir STR` : Traffic direction: h2d, d2h, bidirectional, all (default: all)
 - `-engine STR` : Traffic engine: copy, compute, all (default: all)
@@ -135,7 +135,7 @@ sudo python3 start_vts.py -tn 5 -rt retrain -iterations 5
 **Description:** Memory bandwidth validation using XPUM tools.
 
 **Parameters:**
-- `-inst STR` : GPU device selector. Supported forms: single (`0`), range (`0-3`), list (`0,1,2,3`), `-1` for all devices (default: -1)
+- `-inst STR` : GPU device selector. Supported forms: single (`0`), range (`0-3`), list (`0,1,2,3`), mixed (`0-3,5,7-8`), `-1` for all devices (default: -1)
 
 **Example:**
 ```bash
@@ -148,9 +148,11 @@ sudo python3 start_vts.py -tn 6 -inst 1
 **Description:** Memory stress testing using DGDiag and XPU-SMI.
 
 **Parameters:**
-- `-inst STR` : GPU device selector. Supported forms: single (`0`), range (`0-3`), list (`0,1,2,3`), `-1` for all devices (default: -1)
+- `-inst STR` : GPU device selector. Supported forms: single (`0`), range (`0-3`), list (`0,1,2,3`), mixed (`0-3,5,7-8`), `-1` for all devices (default: -1)
 - `-testtime INT` : Total monitoring time in seconds (default: 60)
 - `-stime INT` : Sampling time interval in seconds (default: 0)
+
+**Note:** DGDiag-backed tests (7/8/9/10) accept both 0-based card IDs (`0-2`) and DGDiag instance IDs (`1-3`).
 
 **Example:**
 ```bash
@@ -163,7 +165,7 @@ sudo python3 start_vts.py -tn 7 -inst 0 -testtime 120
 **Description:** Enhanced power and thermal validation under stress conditions using DGDiag tools with timestamp-based filtering for accurate measurement windows, realistic value validation (1-2000W power, 10-200°C temperatures), and thermal throttling detection using 'Throttle reason' analysis.
 
 **Parameters:**
-- `-inst STR` : GPU device selector. Supported forms: single (`0`), range (`0-3`), list (`0,1,2,3`), `-1` for all devices (default: -1)
+- `-inst STR` : GPU device selector. Supported forms: single (`0`), range (`0-3`), list (`0,1,2,3`), mixed (`0-3,5,7-8`), `-1` for all devices (default: -1)
 - `-testtime INT` : Test duration in seconds (default: 300)
 - `-cs STR` : CPU stress tool: None, stress-ng, ptat (default: stress-ng)
 
@@ -178,7 +180,7 @@ sudo python3 start_vts.py -tn 8 -testtime 600 -cs stress-ng
 **Description:** Enhanced EDP pulse stress testing using DGDiag PulseStress tool with adaptive pulse detection algorithms, 90% tolerance validation, and dual baseline strategies for varying active/idle ratios.
 
 **Parameters:**
-- `-inst STR` : GPU device selector. Supported forms: single (`0`), range (`0-3`), list (`0,1,2,3`), `-1` for all devices (default: -1)
+- `-inst STR` : GPU device selector. Supported forms: single (`0`), range (`0-3`), list (`0,1,2,3`), mixed (`0-3,5,7-8`), `-1` for all devices (default: -1)
 - `-testtime INT` : Test duration in seconds (default: 300)
 - `-at INT` : Active time for stress cycles in seconds (default: 3)
 - `-it INT` : Idle time between stress cycles in seconds (default: 3)
@@ -195,7 +197,7 @@ sudo python3 start_vts.py -tn 9 -testtime 600 -at 5 -it 2
 **Description:** Core GPU functionality testing with comprehensive hardware validation.
 
 **Parameters:**
-- `-inst STR` : GPU device selector. Supported forms: single (`0`), range (`0-3`), list (`0,1,2,3`), `-1` for all devices (default: -1)
+- `-inst STR` : GPU device selector. Supported forms: single (`0`), range (`0-3`), list (`0,1,2,3`), mixed (`0-3,5,7-8`), `-1` for all devices (default: -1)
 
 **Status:** Not yet available
 

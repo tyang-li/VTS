@@ -23,7 +23,13 @@ class testClass(dgdiagBase):
         super().add_arguments()
         
         # Add all arguments using the helper function
-        self.add_parser_argument('-inst', 'GPU Device instance spec: -1 (all), single ID (e.g. 0), range (e.g. 0-3), or list (e.g. 0,1,2)', str, '-1', 'inst')
+        self.add_parser_argument(
+            '-inst',
+            "GPU device instance spec: -1 (all), single ID (e.g. 2), range (e.g. 0-3), or list (e.g. 0,1,2,3)",
+            str,
+            '-1',
+            'inst'
+        )
         self.add_parser_argument('-testtime', 'Time duration to run Stress Test in secs', int, 300, 'testtime')
         
         # Override CPU stress default to stress-ng for power and thermal testing

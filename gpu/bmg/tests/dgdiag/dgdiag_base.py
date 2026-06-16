@@ -41,6 +41,61 @@ class dgdiagBase(testBase):
     def add_arguments(self):
         super().add_arguments()
 
+    def _parse_instance_spec(self, inst_spec):
+        """Parse instance spec into a sorted unique list of DGDiag IDs, or None for all."""
+        spec = str(inst_spec).strip()
+        if spec == '-1':
+            return None
+
+        requested = set()
+        tokens = [token.strip() for token in spec.split(',') if token.strip()]
+        if not tokens:
+            raise ValueError("Empty -inst value. Use -1, a single id, a range (e.g. 0-3), or a list (e.g. 0,1,2)")
+
+        for token in tokens:
+            if '-' in token:
+                parts = token.split('-')
+                if len(parts) != 2 or not parts[0].isdigit() or not parts[1].isdigit():
+                    raise ValueError(f"Invalid range token '{token}' in -inst='{spec}'")
+                start = int(parts[0])
+                end = int(parts[1])
+                if start > end:
+                    raise ValueError(f"Invalid descending range '{token}' in -inst='{spec}'")
+                for gpu_id in range(start, end + 1):
+                    requested.add(gpu_id)
+            else:
+                if not token.isdigit():
+                    raise ValueError(f"Invalid GPU id token '{token}' in -inst='{spec}'")
+                requested.add(int(token))
+
+        return sorted(requested)
+
+    def _resolve_selected_instances(self, inst_spec):
+        """Resolve selected DGDiag instances and validate requested IDs exist."""
+        requested = self._parse_instance_spec(inst_spec)
+        if requested is None:
+            return list(self.dginstances)
+
+        available = set(self.dginstances)
+        # First, honor exact DGDiag instance IDs as-is.
+        if all(inst in available for inst in requested):
+            return requested
+
+        # DGDiag often uses 1-based instance IDs (1..N) while users pass 0-based card IDs.
+        # If exact match fails, auto-translate 0-based input to 1-based DGDiag IDs.
+        translated = [inst + 1 for inst in requested]
+        if all(inst in available for inst in translated):
+            self.logger.info(f"Interpreting -inst={inst_spec} as 0-based card indices -> DGDiag instances {translated}")
+            return translated
+
+        missing = sorted(inst for inst in requested if inst not in available)
+        missing_translated = sorted(inst for inst in translated if inst not in available)
+        raise ValueError(
+            f"Requested DGDiag instance(s) not found: {missing}. "
+            f"If using 0-based card IDs, unresolved after +1 mapping: {missing_translated}. "
+            f"Available instances: {self.dginstances}"
+        )
+
     def parseResults(self):
         error_code = None
         error_description = None
