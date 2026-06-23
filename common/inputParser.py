@@ -3,6 +3,45 @@ import argparse
 import importlib
 from common.utils import Utils
 
+
+class _NoAbbrevArgumentParser(argparse.ArgumentParser):
+    """ArgumentParser that fully honors ``allow_abbrev=False``.
+
+    The stdlib argparse only guards prefix-abbreviation for ``--long`` options.
+    For single-dash long options (e.g. ``-live_mon``) it still matches any
+    shorter prefix (e.g. ``-l``) regardless of ``allow_abbrev``. VTS uses
+    single-dash long options globally (``-live_mon``, ``-stop_on_error``,
+    ``-pcie_downgrade`` ...) while individual tests register their own short
+    options (``-l`` diagnostic level, etc.) only after the test is selected.
+
+    Without this override the global bootstrap parse greedily abbreviation-
+    matches a test-specific flag like ``-l`` to a global flag like
+    ``-live_mon`` and fails before the owning test can register it. This
+    subclass restricts the single-dash prefix match to when ``allow_abbrev`` is
+    enabled, so unknown short flags fall through to ``parse_known_args`` extras
+    and are handled later by the test class.
+    """
+
+    def _get_option_tuples(self, option_string):
+        chars = self.prefix_chars
+        # Single-dash long option (e.g. "-live_mon"): apply the abbreviation guard.
+        if option_string[0] in chars and option_string[1] not in chars:
+            result = []
+            option_prefix = option_string
+            short_option_prefix = option_string[:2]
+            short_explicit_arg = option_string[2:]
+            for opt in self._option_string_actions:
+                if opt == short_option_prefix:
+                    action = self._option_string_actions[opt]
+                    result.append((action, opt, '', short_explicit_arg))
+                elif self.allow_abbrev and opt.startswith(option_prefix):
+                    action = self._option_string_actions[opt]
+                    result.append((action, opt, None, None))
+            return result
+        # Double-dash options keep the stdlib behavior (already abbrev-guarded).
+        return super()._get_option_tuples(option_string)
+
+
 class InputParser:
     _initialization_logged = False  # Class variable to track if initialization messages have been shown
     
@@ -12,7 +51,7 @@ class InputParser:
         Raises ValueError if any argument is invalid.
         """
         self.device_manager = device_manager
-        self.parser = argparse.ArgumentParser(description="Verification Test Suite Runner.", add_help=False)
+        self.parser = _NoAbbrevArgumentParser(description="Verification Test Suite Runner.", add_help=False, allow_abbrev=False)
         self.logger = logger
         self.utils = Utils(self.logger)
 
