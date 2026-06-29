@@ -34,3 +34,5 @@ logs/
 
 # Patch
 ze_bandwidth_numa_fix/
+gpu/bmg/tests/ai_wl/.env
+gpu/bmg/tests/ai_wl/.env-wei
