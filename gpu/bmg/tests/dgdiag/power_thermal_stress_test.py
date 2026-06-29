@@ -23,7 +23,13 @@ class testClass(dgdiagBase):
         super().add_arguments()
         
         # Add all arguments using the helper function
-        self.add_parser_argument('-inst', 'GPU Device instance', int, -1, 'inst')
+        self.add_parser_argument(
+            '-inst',
+            "GPU device instance spec: -1 (all), single ID (e.g. 2), range (e.g. 0-3), or list (e.g. 0,1,2,3)",
+            str,
+            '-1',
+            'inst'
+        )
         self.add_parser_argument('-testtime', 'Time duration to run Stress Test in secs', int, 300, 'testtime')
         
         # Override CPU stress default to stress-ng for power and thermal testing
@@ -34,12 +40,15 @@ class testClass(dgdiagBase):
         self.gpuCommands = []
         envVars = f''
 
-        if self.parsed_args.inst == -1:
-            inst=''
-            for inst_aux in self.dginstances:
-                inst+=f'{inst_aux},'
-        else:
-            inst=self.parsed_args.inst
+        try:
+            _requested_gpu_ids, target_instances = self.resolve_selected_gpu_instances()
+        except ValueError as parse_error:
+            self.logger.error(f"Invalid -inst argument: {parse_error}")
+            return STATUS_FAILED
+        if not target_instances:
+            self.logger.error("No GPU instances selected for power/thermal stress test")
+            return STATUS_FAILED
+        inst = ','.join(str(gpu_id) for gpu_id in target_instances)
 
         self.gpuCommands.append(f'{envVars}./DGDiagTool -SYSTEM.UTIL.GFXStress inst={inst} interface=Vulkan testtime={self.parsed_args.testtime} headless=1')
 

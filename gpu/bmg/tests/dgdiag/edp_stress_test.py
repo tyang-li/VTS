@@ -3,6 +3,7 @@
 # DGDiag Excursion Design Power Stress Test
 
 from .power_thermal_stress_test import testClass as PowerThermalStressTest
+from common.common_defs import STATUS_SUCCESS, STATUS_FAILED
 from ... import platform_defs
 import pandas as pd
 
@@ -26,6 +27,15 @@ class testClass(PowerThermalStressTest):
     def prepareGpuCommands(self):
         super().prepareGpuCommands()
         self.gpuCommands = []
+
+        try:
+            _requested_gpu_ids, target_instances = self.resolve_selected_gpu_instances()
+        except ValueError as parse_error:
+            self.logger.error(f"Invalid -inst argument: {parse_error}")
+            return STATUS_FAILED
+        if not target_instances:
+            self.logger.error("No GPU instances selected for EDP stress test")
+            return STATUS_FAILED
         
         # Ensure power thermal specs are initialized (lazy loading trigger)
         _ = self.platform_defs_instance.power_thermal_specs
@@ -33,11 +43,9 @@ class testClass(PowerThermalStressTest):
         # Get DGDiag duration buffer from platform configuration (following dgdiagBase pattern)
         dgdiag_buffer = self.platform_defs_instance.test_timeout_dict['EDP_STRESS_TEST']['dgdiag_duration_buffer']
 
-        if self.parsed_args.inst == -1:
-            for inst in self.dginstances:
-                self.gpuCommands.append(f'./DGDiagTool -PM.TEST.PulseStress inst={inst} duration={self.parsed_args.testtime+dgdiag_buffer} active_time={self.parsed_args.active_time} idle_time={self.parsed_args.idle_time} headless=1 stime=5000')
-        else:
-            self.gpuCommands.append(f'./DGDiagTool -PM.TEST.PulseStress inst={self.parsed_args.inst} duration={self.parsed_args.testtime+dgdiag_buffer} active_time={self.parsed_args.active_time} idle_time={self.parsed_args.idle_time} headless=1 stime=5000')
+        for inst in target_instances:
+            self.gpuCommands.append(f'./DGDiagTool -PM.TEST.PulseStress inst={inst} duration={self.parsed_args.testtime+dgdiag_buffer} active_time={self.parsed_args.active_time} idle_time={self.parsed_args.idle_time} headless=1 stime=5000')
+        return STATUS_SUCCESS
     
     def _should_timeout_gpu_command(self, elapsed_time):
         """

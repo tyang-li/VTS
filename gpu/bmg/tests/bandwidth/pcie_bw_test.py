@@ -5,6 +5,7 @@
 import re
 import os
 from ..test_base import testBase
+from common.common_defs import STATUS_SUCCESS, STATUS_FAILED, ERROR_EXCEPTION
 
 class testClass(testBase):
     def __init__(self, testNumber, logger, device_manager, parsed_args):
@@ -116,16 +117,33 @@ class testClass(testBase):
         super().add_arguments()
         
         # Add all arguments using the helper function
-        self.add_parser_argument('-inst', 'GPU Device instance', int, -1, 'inst') #-1 means all instances
+        self.add_parser_argument(
+            '-inst',
+            "GPU device instance spec: -1 (all), single ID (e.g. 2), range (e.g. 0-3), or list (e.g. 0,1,2,3)",
+            str,
+            '-1',
+            'inst'
+        )
         self.add_parser_argument('-mode', 'Execution Mode', str, 'all', 'mode', choices=['serial', 'parallel', 'all']) #all means do it serially and parallely 
         self.add_parser_argument('-dir', 'Traffic Direction', str, 'all', 'dir', choices=['h2d', 'd2h', 'bidirectional', 'all']) #all means do all directions (d2h, h2d and 'bidirectional')
         self.add_parser_argument('-engine', 'Traffic Engine', str, 'all', 'engine', choices=['copy', 'compute', 'all']) #all means do all engines (copy, compute)
         self.add_parser_argument('-tool', 'Bandwidth Test Tool', str, 'all', 'tool', choices=['ze_bandwidth', 'memory_benchmark_l0', 'all']) #all means use both tools
         self.add_parser_argument('-iterations', 'Number of test iterations', int, 500, 'iterations') #number of iterations for bandwidth test
         self.add_parser_argument('-size', 'Buffer size in bytes', int, 268435456, 'size') #buffer size for bandwidth test (default 256MB)
+
+    def _parse_instance_spec(self, inst_spec):
+        """Parse and validate zero-based GPU IDs for the bandwidth test."""
+        available_gpu_count = len(self.dginstances) if self.dginstances else None
+        return self.resolve_selected_gpu_ids(inst_spec, available_gpu_count=available_gpu_count)
     
     def prepareGpuCommands(self):
         self.gpuCommands = []
+
+        try:
+            requested_instances = self._parse_instance_spec(self.parsed_args.inst)
+        except ValueError as parse_error:
+            self.logger.error(f"Invalid -inst argument: {parse_error}")
+            return STATUS_FAILED
         
         # Set execution directory to tools folder at root level - find project root
         current_dir = os.path.dirname(__file__)
@@ -138,7 +156,7 @@ class testClass(testBase):
         runbw_script = os.path.join(self.execution_dir, 'runBwTest.sh')
         if not os.path.exists(runbw_script):
             self.logger.error(f"Required script not found: {runbw_script}")
-            return
+            return STATUS_FAILED
             
         # Ensure runBwTest.sh is executable
         if not self.utils.make_script_executable(runbw_script):
@@ -200,8 +218,8 @@ class testClass(testBase):
         
         # Generate commands for each test combination
         for tool, direction, engine, mode in test_combinations:
-            # Handle GPU specification based on mode and instance
-            if self.parsed_args.inst == -1:  # All GPUs
+            # Handle GPU specification based on mode and selected instances.
+            if requested_instances is None:  # All GPUs
                 if mode == 'serial':
                     # Serial mode: run on each GPU individually
                     for gpu_id in self.dginstances.keys():
@@ -212,22 +230,50 @@ class testClass(testBase):
                     command = f'bash runBwTest.sh {tool} {direction} {engine} all {self.parsed_args.iterations} {self.parsed_args.size} {mode}'
                     self.gpuCommands.append(command)
             else:
-                # Specific GPU instance specified - validate it exists
+                # Specific GPU list/range/single instance specified - validate when possible.
                 if not self.dginstances:
-                    self.logger.warning(f"No GPU instances detected, proceeding with GPU {self.parsed_args.inst}")
-                    gpu_spec = str(self.parsed_args.inst)
-                    command = f'bash runBwTest.sh {tool} {direction} {engine} {gpu_spec} {self.parsed_args.iterations} {self.parsed_args.size} {mode}'
-                    self.gpuCommands.append(command)
-                elif self.parsed_args.inst in self.dginstances:
-                    gpu_spec = str(self.parsed_args.inst)
-                    command = f'bash runBwTest.sh {tool} {direction} {engine} {gpu_spec} {self.parsed_args.iterations} {self.parsed_args.size} {mode}'
-                    self.gpuCommands.append(command)
+                    self.logger.warning(
+                        f"No GPU instances detected, proceeding with requested GPUs: {requested_instances}"
+                    )
+                    if mode == 'serial':
+                        for gpu_id in requested_instances:
+                            command = f'bash runBwTest.sh {tool} {direction} {engine} {gpu_id} {self.parsed_args.iterations} {self.parsed_args.size} {mode}'
+                            self.gpuCommands.append(command)
+                    else:
+                        gpu_spec = ','.join(str(gpu_id) for gpu_id in requested_instances)
+                        command = f'bash runBwTest.sh {tool} {direction} {engine} {gpu_spec} {self.parsed_args.iterations} {self.parsed_args.size} {mode}'
+                        self.gpuCommands.append(command)
                 else:
-                    self.logger.error(f"GPU instance {self.parsed_args.inst} not found in available GPUs: {list(self.dginstances.keys())}")
+                    available_gpus = set(self.dginstances.keys())
+                    valid_instances = [gpu_id for gpu_id in requested_instances if gpu_id in available_gpus]
+                    invalid_instances = [gpu_id for gpu_id in requested_instances if gpu_id not in available_gpus]
+
+                    if invalid_instances:
+                        self.logger.warning(
+                            f"Ignoring unavailable GPU instances {invalid_instances}; available GPUs: {sorted(available_gpus)}"
+                        )
+
+                    if not valid_instances:
+                        self.logger.error(
+                            f"No valid GPU instances in request {requested_instances}; available GPUs: {sorted(available_gpus)}"
+                        )
+                        continue
+
+                    if mode == 'serial':
+                        for gpu_id in valid_instances:
+                            command = f'bash runBwTest.sh {tool} {direction} {engine} {gpu_id} {self.parsed_args.iterations} {self.parsed_args.size} {mode}'
+                            self.gpuCommands.append(command)
+                    else:
+                        gpu_spec = ','.join(str(gpu_id) for gpu_id in valid_instances)
+                        command = f'bash runBwTest.sh {tool} {direction} {engine} {gpu_spec} {self.parsed_args.iterations} {self.parsed_args.size} {mode}'
+                        self.gpuCommands.append(command)
 
         # Final validation
         if not self.gpuCommands:
             self.logger.error("No valid GPU commands generated. Check GPU detection and tool availability.")
+            return STATUS_FAILED
+
+        return STATUS_SUCCESS
 
     def get_bandwidth_threshold(self, tool, direction, engine, mode, pcie_gen=None, pcie_width=None):
         """Get the bandwidth threshold for a specific test combination using dynamic calculation.
@@ -399,9 +445,11 @@ class testClass(testBase):
         if total_tests > 0 and passed_tests == total_tests:
             self.overall_test_result = 'PASS'
             self.logger.pass_msg(f'OVERALL TEST RESULT : PASS ({passed_tests}/{total_tests} tests passed)')
+            return STATUS_SUCCESS
         else:
             self.overall_test_result = 'FAIL'
             self.logger.fail_msg(f'OVERALL TEST RESULT : FAIL ({passed_tests}/{total_tests} tests passed)')
+            return STATUS_FAILED
 
     def extract_test_info(self, result):
         """Extract test parameters from command output"""

@@ -888,6 +888,79 @@ class testBase(ABC):
         """Base implementation that adds common arguments. Subclasses should call super().add_arguments() first."""
         self.add_parser_argument('-cs', 'CPU Stress tool to run in parallel', str, 'None', 'cs', choices=['None', 'stress-ng', 'ptat'])
 
+    def parse_gpu_instance_spec(self, inst_spec):
+        """Parse -inst value into sorted unique GPU IDs, or None when '-1' is used.
+
+        Supported formats:
+        - '-1' for all GPUs
+        - single ID: '2'
+        - range: '0-3'
+        - list: '0,2,4'
+        - mixed list/range: '0-2,5,7-8'
+        """
+        spec = str(inst_spec).strip()
+        if spec == '-1':
+            return None
+
+        tokens = [token.strip() for token in spec.split(',') if token.strip()]
+        if not tokens:
+            raise ValueError("Empty -inst value. Use -1, a single id, a range (e.g. 0-3), or a list (e.g. 0,1,2)")
+
+        requested = set()
+        for token in tokens:
+            if '-' in token:
+                parts = token.split('-')
+                if len(parts) != 2 or not parts[0].isdigit() or not parts[1].isdigit():
+                    raise ValueError(f"Invalid range token '{token}' in -inst='{spec}'")
+                start = int(parts[0])
+                end = int(parts[1])
+                if start > end:
+                    raise ValueError(f"Invalid descending range '{token}' in -inst='{spec}'")
+                for gpu_id in range(start, end + 1):
+                    requested.add(gpu_id)
+            else:
+                if not token.isdigit():
+                    raise ValueError(f"Invalid GPU id token '{token}' in -inst='{spec}'")
+                requested.add(int(token))
+
+        return sorted(requested)
+
+    def resolve_selected_gpu_ids(self, inst_spec=None, available_gpu_count=None):
+        """Resolve user-facing zero-based GPU IDs for ``-inst``.
+
+        Args:
+            inst_spec: Optional raw ``-inst`` value. Defaults to ``self.parsed_args.inst``.
+            available_gpu_count: Optional detected GPU count. When provided, the
+                selection is validated against the zero-based range ``0..N-1`` and
+                ``-1`` expands to all detected GPU IDs.
+
+        Returns:
+            list[int] | None: Sorted zero-based GPU IDs, or None when ``-1`` was
+            requested and no GPU count was provided for expansion.
+        """
+        requested_gpu_ids = self.parse_gpu_instance_spec(
+            self.parsed_args.inst if inst_spec is None else inst_spec
+        )
+
+        if available_gpu_count is None:
+            return requested_gpu_ids
+
+        if available_gpu_count < 0:
+            raise ValueError(f"Invalid GPU count {available_gpu_count}")
+
+        available_gpu_ids = list(range(available_gpu_count))
+        if requested_gpu_ids is None:
+            return available_gpu_ids
+
+        invalid_gpu_ids = [gpu_id for gpu_id in requested_gpu_ids if gpu_id not in available_gpu_ids]
+        if invalid_gpu_ids:
+            raise ValueError(
+                f"Requested GPU IDs {invalid_gpu_ids} are out of range; "
+                f"available GPU IDs: {available_gpu_ids}"
+            )
+
+        return requested_gpu_ids
+
     def add_parser_argument(self, arg_name, help_text, arg_type, default_value, dest_name, **kwargs):
         """
         Safely add an argument to the parser, handling duplicates gracefully.
