@@ -1,6 +1,11 @@
 # Copyright (C) 2024-2026 Intel Corporation
 version = "0.6"
 
+# Standard return/status codes used across tests and orchestration.
+STATUS_SUCCESS = 0
+STATUS_FAILED = 1
+ERROR_EXCEPTION = 2
+
 gpuDidDevicesDict = {'1020':{'family':'gaudi','model':'Intel Gaudi 2'},
                      '1060':{'family':'gaudi','model':'Intel Gaudi 3 OAM'},
                      '1061':{'family':'gaudi','model':'Intel Gaudi 3 PCIe'},
