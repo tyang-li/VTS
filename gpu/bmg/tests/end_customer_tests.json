@@ -1,0 +1,40 @@
+[
+  {
+    "comment": "GPU Health Test - Basic GPU health check with XPUM monitoring",
+    "tn": 1,
+    "rep": 3,
+    "mt":"xpum",
+    "cs":"None",
+    "d": true
+  },
+  {
+    "comment": "GPU Diagnostic Test - Comprehensive diagnostic (long level) XPUM monitoring",
+    "tn": 2,
+    "rep": 3,
+    "mt":"xpum",
+    "cs":"None",
+    "d": true,
+    "l": "long"
+  },
+  {
+    "comment": "PCIe Bandwidth Test - with XPUM monitoring, no CPU stress",
+    "tn": 3,
+    "rep": 3,
+    "mt":"xpum",
+    "cs":"None",
+    "d": true
+  },
+  {
+    "comment": "Power Stress Test - 900 seconds power stress test with CPU stress",
+    "tn": 8,
+    "rep": 3,
+    "mt":"xpum",
+    "cs":"stress-ng",
+    "d": true,
+    "testtime":900
+  },
+  {
+    "comment": "Collect Logs - Generate HTML summary and zip all log files",
+    "tn": "c"
+  }
+]

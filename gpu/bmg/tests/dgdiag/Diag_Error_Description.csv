@@ -1,0 +1,561 @@
+﻿Error Code,Description
+0x0001,HWAPI Intialization successful        
+0x0013,In Progress         
+0x0014,Success Ctrlc Interrupted        
+0x1001,Failed to locate device.       
+0x1002,Failed to find fan device.      
+0x1003,Failed due to unsupported version.      
+0x1004,Device Not Capable        
+0x1005,Failed due to unsupported device.      
+0x1006,Invalid null pointer encountered.       
+0x1007,Invalid offset specified.        
+0x1008,Invalid size parameter.        
+0x1009,Invalid Path         
+0x100A,Invalid BDF         
+0x100B,Invalid BDF Path        
+0x100C,Out of range error.       
+0x100D,Failed due to unknown device.      
+0x100E,Unsupported interface encountered.        
+0x100F,Invalid argument provided.        
+0x1010,Failed to create performance file.      
+0x1011,Memory allocation failed.        
+0x1012,Unsupported feature encountered.        
+0x1013,Invalid data type specified.       
+0x1014,Invalid file encountered.        
+0x1015,Performance handle not found.       
+0x1016,Failed to open File.       
+0x1017,Failed to Create File.       
+0x1018,Failed to read file.       
+0x1019,Failed to Seek File.       
+0x101A,Failed to open Directory.       
+0x101B,Failed to retrieve current working directory.     
+0x101C,Failed to set up Device Interface (DI) for retrieving class devices.
+0x101D,Failed to retrieve device instance ID via Device Interface (DI). 
+0x101E,Failed to enumerate device information via Device Interface (DI).  
+0x101F,Failed to retrieve device node status via Configuration Manager (CM). 
+0x1020,Invalid Buffer size Too Small      
+0x1021,Failed to Get CM Device Interface List    
+0x1022,Failed to Get Device IO Control.     
+0x1023,Initialization failure.         
+0x1024,Unsupported API called.        
+0x1025,Interface not supported.        
+0x1026,API call failed.        
+0x1027,Test operation failed.        
+0x1028,Monitoring process failed.        
+0x1029,Molten process Failed        
+0x102A,Deinitialization process failure.        
+0x102B,OpenCL Buffer Failure        
+0x102C,Unknown Data Type        
+0x102D,OOBMSM Register Not Found       
+0x102E,OOBMSM GUID Not Found       
+0x102F,OOBMSM Path Not Found       
+0x1030,Display RefreshRate Test Fail       
+0x1031,Display RefreshRate Set Fail       
+0x1032,Mutex Init Failed        
+0x1033,Mutex Lock Failed        
+0x1034,Mutex Unlock Failed        
+0x1035,No HWAccess Interface        
+0x1036,HWAccess Init Failure        
+0x1037,HWAccess Deinit Failure        
+0x1038,HWAccess Read Failure        
+0x1039,HWAccess Write Failure        
+0x103A,HWAccess Init Dev List Failure      
+0x103B,System Restart Failed        
+0x103C,Set RunOnce Failed        
+0x2001,Failed to initialize CAPI interface      
+0x3001,Failed to init GLFW       
+0x3002,Failed to create GLFW Window      
+0x3003,GLFW video mode failure       
+0x4001,HECI status not ready.       
+0x4002,HECI status check failed.       
+0x4003,Failed to read HECI fuse.      
+0x4004,Failed to read generic HECI fuse.     
+0x4005,HECI end-of-message (EOM) flag is set.     
+0x4006,Invalid HECI fuse ID.       
+0x4007,HECI initialization failure.        
+0x5001,HWAPI initialization failure.        
+0x5002,HWAPI deinitialization failure.        
+0x5003,Failed to read from HWAPI.      
+0x5004,Failed to write to HWAPI.      
+0x6001,Failed to retrieve adapter via ESCAPE.     
+0x6002,Failed to retrieve manager via ESCAPE.     
+0x6003,Failed to retrieve device list via ESCAPE.    
+0x6004,No device found.        
+0x6005,Failed to retrieve sysman command      
+0x6006,Failed to set sysman command      
+0x6007,Failed to retrieve all sysman commands     
+0x6008,Invalid component specified.        
+0x6009,Invalid request.         
+0x600A,Invalid domain.         
+0x7001,WMI initialization failure.        
+0x7002,WMI connection failure.        
+0x7003,Failed to execute WMI query.      
+0x7004,WMI object not found.       
+0x7005,Invalid data encountered in WMI operation.     
+0x7006,WMI uninitialization failure.        
+0x7007,Failed to create registry key.      
+0x7008,Failed to set registry key value.     
+0x8001,ZE initialization failed.        
+0x8002,No device found in ZE subsystem.     
+0x8003,Failed to retrieve driver in ZE.     
+0x8004,Handle not found in ZE.      
+0x8005,ZES version loader failed.       
+0x8006,ZES maximum bandwidth retrieval failed.      
+0x8007,ZES frequency state retrieval failed.      
+0x8008,ZES frequency properties retrieval failed.      
+0x8009,ZES device enumeration of frequency domains failed.    
+0x9001,Failed to achieve successful result with CONFIGLIB.    
+0x9002,Invalid file encountered in CONFIGLIB operation.     
+0x9003,Failed to write to CONFIGLIB.      
+0x9004,Failed to read from CONFIGLIB.      
+0x9005,Failed to search in CONFIGLIB.      
+0x9006,Failed to read record from CONFIGLIB.     
+0x9007,Failed to read integer record from CONFIGLIB.    
+0x9008,Failed to read double record from CONFIGLIB.    
+0x9009,Failed to read string record from CONFIGLIB.    
+0x900A,Failed to read indexed record from CONFIGLIB.    
+0x900B,Failed to add record to CONFIGLIB.     
+0x900C,Failed to add integer record to CONFIGLIB.    
+0x900D,Failed to add string record to CONFIGLIB.    
+0x900E,Failed to add double record to CONFIGLIB.    
+0x900F,Failed to retrieve current integer value from CONFIGLIB.   
+0x9010,Failed to retrieve current string value from CONFIGLIB.   
+0x9011,Failed to retrieve current double value from CONFIGLIB.   
+0x9012,Failed to edit minimum value of record in CONFIGLIB.  
+0x9013,Failed to edit maximum value of record in CONFIGLIB.  
+0x9014,Failed to edit current value of record in CONFIGLIB.  
+0x9015,Failed to open file in CONFIGLIB.     
+0x9016,Failed to seek within CONFIGLIB file.     
+0x9017,CONFIGLIB file not found.       
+0x9018,Duplicate record encountered in CONFIGLIB.      
+0xA001,Failed to set CONSOLE HANDLER      
+0xB001,Failed to acquire cryptographic context.      
+0xB002,Failed to create hash object.      
+0xB003,Failed to hash data.       
+0xB004,Failed to retrieve hash parameter.      
+0xC001,Failed to retrieve PCIe device ID.     
+0xC002,Failed to retrieve PCIe vendor ID.     
+0xC003,Failed to retrieve PCIe device statistics.     
+0xC004,Failed to retrieve VRAM usage.      
+0xC005,Failed to retrieve VRAM size.      
+0xC006,Failed to retrieve EU (Execution Unit) count.    
+0xC007,Failed to retrieve PCIe BAR (Base Address Register) properties.  
+0xC008,No devices found.        
+0xC009,Failed to create device.       
+0xC00A,Failed to close device.       
+0xC00B,Failed to close adapter.       
+0xC00C,Adapter not found.        
+0xC00D,Failed to open adapter.       
+0xC00E,Failed to initialize PDH (Performance Data Helper).    
+0xC00F,Failed to initialize ESCAPE.       
+0xC010,Failed to retrieve VRAM information.      
+0xC011,Failed to retrieve device information.      
+0xD001,Failed to retrieve EDID data.      
+0xD002,Invalid display count encountered.       
+0xD003,No display extension found.       
+0xD004,EDID access failed.        
+0xD005,Failed to read underrun.       
+0xD006,Failed to clear underrun.       
+0xD007,Failed to retrieve scaling information.      
+0xD008,Failed to set scaling information.      
+0xD009,CRC test failed.        
+0xD00A,Pending message bus transmission not cleared.     
+0xD00B,Message bus response not ready.      
+0xD00C,Failed to write PHY message bus.     
+0xD00D,PHY transmission tuning failed.       
+0xD00E,Transformation to DDI mapping failed.      
+0xD00F,DDI to transformation mapping failed.      
+0xD010,Unsupported test pattern encountered.       
+0xD011,Unsupported DDI mode.        
+0xD012,Yellow bang error.        
+0xD013,Resolution failure for PNG.       
+0xD014,PNG file not found.       
+0xD015,Invalid PNG file encountered.       
+0xD016,Failed to create PNG structure.      
+0xD017,PNG set jump failure.       
+0xD018,Failed on Image Display       
+0xD019,HDCP set failed.        
+0xD01A,Failed to retrieve HDCP status.      
+0xD01B,Failed to get display configuration buffer size    
+0xD01C,Failed to query display configuration      
+0xD01D,Failed on Display Setting       
+0xD01E,Display monitor not found       
+0xD01F,Display configuration not supported       
+0xD020,Failed to set display configuration      
+0xD021,Failed to enumerate display setting      
+0xD022,Display setting test failed       
+0xD023,Failed to change display setting      
+0xD024,Display mode switching test fail      
+0xD025,Failed on Display unsupported Gen      
+0xD026,Failed to Read Display Pixel pipe Plane Reg   
+0xD027,Failed to Read Display Pixel pipe Cursors Reg   
+0xD028,Failed to Read Display Pixel pipe Dpst Reg   
+0xD029,Failed to Read Display Pixel pipe Lace Reg   
+0xD02A,Failed to Read Display Pixel pipe Scaler Reg   
+0xD02B,Failed to Read Display Pixel pipe Fbc Reg   
+0xD02C,Failed to Read Display Pixel pipe Flipq Reg   
+0xD02D,Failed to Read Display Pixel pipe Reg    
+0xD02E,Failed to Read Display Global Reg     
+0xD02F,Failed to Read Display PM Main DMC Reg   
+0xD030,Failed to Read Display PM Pipe DMC Reg   
+0xD031,Failed to Read Display PM DC State Reg   
+0xD032,Failed to Read Display PM PSR Reg    
+0xD033,Failed to Read Display Ports Transcoder Reg    
+0xD034,Failed to Read Display Ports DDI Reg    
+0xD035,Failed to Read Display Ports SDPCH Reg    
+0xD036,Failed on Display Register Dump      
+0xE001,Failed to retrieve fan speed.      
+0xE002,Failed to retrieve fan status.      
+0xE003,Failed to retrieve fan control configuration.     
+0xE004,Failed to retrieve fan table configuration.     
+0xE005,Failed to restore fan table.      
+0xE006,Failed to set fan speed.      
+0xE007,Failed to set fan table.      
+0xE008,PID timeout occurred.        
+0xE009,Failed to write TJMAX control mode.     
+0xE00A,Failed to read TJMAX control mode.     
+0xE00B,Failed to write FSC PID control mode.    
+0xE00C,Failed to read FSC PID control mode.    
+0xE00D,Failed to restore FSC PID control mode.    
+0xE00E,Failed to write KP parameter.      
+0xE00F,Failed to read KP parameter.      
+0xE010,Failed to read step size.      
+0xE011,Failed during initial minimum PWM setup.     
+0xE012,Failed to restore KP parameter.      
+0xE013,Failed to write KI parameter.      
+0xE014,Failed to read KI parameter.      
+0xE015,Failed to restore KI parameter.      
+0xE016,Failed to write KD parameter.      
+0xE017,Failed to read KD parameter.      
+0xE018,Failed to restore KD parameter.      
+0xE019,Failed to write FSC PWM control.     
+0xE01A,Failed to read FSC PWM control.     
+0xE01B,Failed to restore FSC PWM control.     
+0xE01C,Failed to write temperature RPM number of points.   
+0xE01D,Failed to write temperature RPM table.     
+0xE01E,Failed to read temperature RPM number of points.   
+0xE01F,Failed to read temperature RPM table.     
+0xE020,Failed to restore temperature RPM table.     
+0xE021,Failed to write RPM PWM number of points.   
+0xE022,Failed to write RPM PWM table.     
+0xE023,Failed to read RPM PWM number of points.   
+0xE024,Failed to read RPM PWM table.     
+0xE025,Failed to restore RPM PWM table.     
+0xE026,Failed to read fan 45659 PWM on/off time.   
+0xE027,Failed to read fan 3 PWM on/off time.   
+0xE028,Failed fan curve test.       
+0xE029,Maximum fan tolerance test failed.      
+0xE02A,Minimum fan tolerance test failed.      
+0xE02B,50 percent fan test failed.      
+0xE02C,80 percent fan test failed.      
+0xF001,Failed to retrieve average FPS.      
+0xF002,Failed to find process ID for FPS tracking.   
+0xF003,FPS session initialization failure.       
+0xF004,FPS tracking failure.        
+0xF005,Failed to register dynamic FPS query.     
+0xF006,Failed to poll dynamic FPS query.     
+0xF007,Polling limit reached for dynamic FPS query.    
+0x10001,Failed to retrieve core clock.      
+0x10002,Failed to retrieve device slice information.     
+0x10003,Failed to retrieve GT (Graphics Technology) slice clock.   
+0x10004,Failed to retrieve GT unslice clock.     
+0x10005,Failed to display clocks.       
+0x10006,Failed to retrieve resolved GT frequency.     
+0x10007,Failed to retrieve frequency statistics.      
+0x10008,Failed to set overclocked frequency.      
+0x10009,Failed to retrieve activity counters.      
+0x1000A,Failed to retrieve frequency range.      
+0x1000B,Failed to set frequency range.      
+0x1000C,Failed to retrieve media frequency.      
+0x1000D,Illegal command encountered in mailbox operation.     
+0x11001,Escape Media Read        
+0x11002,Escape SubDevices         
+0x11003,Media Domain Freq        
+0x11004,Media Set Range        
+0x11005,Media Set Activity Factor       
+0x11006,Media Decode Failed        
+0x11007,Media Encode Failed        
+0x11008,Codec Found Failed        
+0x11009,Open Codec Failed        
+0x1100A,Allocate Video Context Failed       
+0x1100B,Allocate Video Frame Failed       
+0x1100C,Allocate Video Frame Data Failed      
+0x1100D,Pkt Allocate Failed        
+0x1100E,Frame Writeable Failed        
+0x1100F,Encoding Frame Failed        
+0x11010,Encoding Failed         
+0x11011,AVCodec Receive Pkt Failed       
+0x11012,Encode Failed         
+0x11013,Decode Send Pkt Failed       
+0x11014,Decode Recv Frame Failed       
+0x11015,Decode Stream Info Failed       
+0x11016,Video Stream Find Failed       
+0x11017,HW Context Create Failed       
+0x11018,Decode Failed         
+0x11019,Audio Playback Failed        
+0x1101A,SDL Init Failed        
+0x1101B,SDL WAV Load Failed       
+0x1101C,Open Audio Device Failed       
+0x1101D,AV Parser Init Failed       
+0x1101E,AV Parser Failed        
+0x1101F,MD5 Sum Mismatch Failed       
+0x11020,Remove Video File Failed       
+0x11021,Decoder Not Found        
+0x11022,Codec Parameters to Context Failed      
+0x11023,Output Context Create Failed       
+0x11024,Alloc Context3 Failed        
+0x11025,Set HW Frame Failed       
+0x11026,AV Frame Get Buffer Failed      
+0x11027,HW Frame Context Failed       
+0x11028,HW Transfer Frame Failed       
+0x11029,Output Stream Allocation Failed       
+0x1102A,Encoder Not Found        
+0x1102B,Channel Layout Failed        
+0x1102C,Media Type Unknown Failed       
+0x1102D,Parameter Copy Failed        
+0x1102E,Failed to Open Output File      
+0x1102F,Filtering Source Not Found       
+0x11030,Sink Buffer Create Failed       
+0x11031,Source Buffer Create Failed       
+0x11032,Pixel Set Failed        
+0x11033,Create Audio Buffer Failed       
+0x11034,Setting Output Channel Layout Failed      
+0x11035,Failed to Set Output SampleRate      
+0x11036,Unknown Error Failed        
+0x11037,Graph Parse Failed        
+0x11038,Graph Config Failed        
+0x11039,Interleaved Frame Failed        
+0x1103A,Pushing Frame to Filter Failed      
+0x1103B,Frame Read Failed        
+0x1103C,Receive Frame Failed        
+0x12001,Get Memory Curr Bandwidth       
+0x12002,Get Memory Max Bandwidth       
+0x12003,Get Curr Memory Clock       
+0x12004,Get Max Memory Clock       
+0x12005,Get Memory Size        
+0x12006,Get Memory Width        
+0x12007,Get Memory Stats        
+0x12008,Get Memory MRC Info       
+0x12009,Get Memory Speed Config       
+0x1200A,Get Memory Type Config       
+0x1200B,Get Memory Vendor Config       
+0x1200C,Read MC Reg        
+0x1200D,Read MSU Reg        
+0x1200E,Read Memory PHYReg        
+0x1200F,Per Bit Failure        
+0x12010,Read Memory Info Fail       
+0x12011,Memory MRC Test        
+0x12012,Memory RMT Validity        
+0x12013,Memory RMT Param        
+0x12014,Memory RMT Margin Test       
+0x12015,Memory RMT Test        
+0x12016,Memory Corr Ucorr Test Failed      
+0x12017,Memory Type Info Fail       
+0x12018,Memory RW Test Fail       
+0x12019,Memory Config Fail        
+0x1201A,Memory Retrain Fail        
+0x13001,OC Not Supported        
+0x13002,Set OC Waiver        
+0x13003,Get OC Properties        
+0x13004,Get OC GPU VoltOffset       
+0x13005,Set OC GPU VoltOffset       
+0x13006,Get OC Power Limit       
+0x13007,Set OC Power Limit       
+0x13008,Get OC Temp Limit       
+0x13009,Set OC Temp Limit       
+0x1300A,Get OC GPU FreqOffset       
+0x1300B,Set OC GPU FreqOffset       
+0x1300C,Get OC GPU Lock       
+0x1300D,Set OC GPU Lock       
+0x1300E,Get OC VF Fail       
+0x1300F,Get OC Memory Fail       
+0x13010,Reset OC Fail        
+0x13011,P0 Frequency Fail        
+0x13012,P0 Voltage Fail        
+0x13013,Set OC Waiver Failed       
+0x13014,Get OC Bin Frq Offset Fail     
+0x13015,Set OC Bin Frq Offset Fail     
+0x14001,PCIe Config Read Failed       
+0x14002,PCIe Config Write Failed       
+0x14003,PCIe MMIO Read Failed       
+0x14004,PCIe MMIO Write Failed       
+0x14005,PCIe Capability Not Found       
+0x14006,PCIe Get Dev List Failed      
+0x14007,PCIe Get GFX Dev List Failed     
+0x14008,PCIe Get Link Speed Failed      
+0x14009,PCIe Get Broken Lanes Failed      
+0x1400A,PCIe Get Max Link Speed Failed     
+0x1400B,PCIe Get Link Width Failed      
+0x1400C,PCIe Get Max Link Width Failed     
+0x1400D,PCIe Set Link Speed Failed      
+0x1400E,PCIe Set Link Width Failed      
+0x1400F,PCIe Link Width Inconsistent       
+0x14010,PCIe Link Speed Inconsistent       
+0x14011,Ext Capability Ptr Update Failed      
+0x14012,PCIe Read ASPM State Failed      
+0x14013,PCIe Verify Force Update Link Speed Test Failure   
+0x14014,PCIe Verify Force Update Link Width Test Failure   
+0x14015,PCIe Verify Link Speed Failed      
+0x14016,PCIe Verify Link Width Failed      
+0x14017,PCIe Update ASPM State Failed      
+0x14018,PCIe Verify ASPM State Failed      
+0x14019,LTSSM Register Set Failed       
+0x1401A,LTSSM Register Read Failed       
+0x1401B,PCIe Invalid ASPM State       
+0x1401C,Verify PCIe Device Detect Failed      
+0x1401D,Write PCI Reg Fail       
+0x1401E,Read PCI Reg Fail       
+0x1401F,PCIe Device Not Found       
+0x14020,PCIe Get State Failure       
+0x14021,PCIe Info Failure        
+0x14022,PCIe Get VSP Failure       
+0x14023,PCIe Get USP Failure       
+0x14024,PCIe Get RP Failure       
+0x14025,PCIe Set Disable PCIeTimeout Failure      
+0x14026,PCIe Get L1 PM Cap Not Found    
+0x14027,PCIe Max Payload Read Error      
+0x14028,PCIe Tag Field Read       
+0x14029,PCIe Bad BAR Offset       
+0x1402A,PCIe Bridge Not Supported       
+0x1402B,PCIe Read Failure        
+0x1402C,PCIe MMIO Read Failure       
+0x1402D,PCIe Invalid Header        
+0x1402E,PCIe Margin Test Failed       
+0x1402F,PCIe Margin Test Not Supported      
+0x14030,PCIe LMT Test Failed       
+0x14031,PCIe FPEye Margin IQC Failed      
+0x14032,PCIe FPEye Margin SLC Failed      
+0x14033,PCIe Power State Config Failed      
+0x14034,PCIe Get Subsystem Info Failed      
+0x14035,PCIe Advanced Error Detected       
+0x14036,PCIe Lane Error Detected       
+0x14037,PCIe Device Error Detected       
+0x14038,PCIe Status Error Detected       
+0x14039,PCIe Error Report Test Failed      
+0x1403A,PCIe Bandwidth Fail        
+0x1403B,Get PCIe Properties Failed       
+0x1403C,PCIe Get DG Device Fail      
+0x1403D,PCIe Downgrade Config Failed       
+0x1403E,PCIe DXCAP Failed        
+0x1403F,PCIe FLR Test Failed       
+0x14040,PCIe GPU Reset Failed       
+0x15001,Get Perf Config        
+0x15002,Set Perf Config        
+0x15003,Set Perf Config Invalid Value      
+0x16001,Get BIOS Info        
+0x16002,Get OS Info        
+0x16003,Get DG Info Fail       
+0x16004,OS Lib Init Fail       
+0x16005,OS Version Fail        
+0x16006,Firmware Info Fail        
+0x16007,Punit Firmware Version Fail       
+0x16008,GSC Firmware Fail        
+0x16009,OpROM Version Fail        
+0x1600A,GFX IP Version Fail       
+0x1600B,SOC Revision ID Fail       
+0x1600C,EOM Fail         
+0x1600D,EOM Set         
+0x1600E,EOM Test Failure        
+0x1600F,Self Diag Test Failure       
+0x16010,Self Test Handler Failure       
+0x16011,Perf PL4 Threshold Failed       
+0x16012,Perf Capability Test Failed       
+0x17001,PM Pkg Pwr Read Error      
+0x17002,PM Get Pwr Limits Error      
+0x17003,PM Get Energy Threshold Error      
+0x17004,PM Get Throttle Reason Error      
+0x17005,PM Set Pwr Limits Error      
+0x17006,PM Get Pwr Stats Error      
+0x17007,PM Get ICCMax Error       
+0x17008,Get PSYS Power        
+0x18001,PMC Init Fail        
+0x18002,PMC Not Found        
+0x19001,Silicon Bin Test        
+0x1A001,G8 Residency Test Failed       
+0x1A002,Residency Test Failed        
+0x1A003,Residencies Failed         
+0x1A004,Telemetry Discovery OOBMSM Aggregator Test Failed     
+0x1A005,Telemetry Discovery OOBMSM CrashLog Test Failed     
+0x1A006,Telemetry Discovery OOBMSM Watcher Sampler Test Failed    
+0x1A007,Telemetry Conditional Counter in OOBMSM Aggregator Test Failed   
+0x1A008,Telemetry Uncore Manual Crash Log Dump Failed    
+0x1A009,Telemetry SOC Config Remapper Test Failed     
+0x1A00A,Telemetry Uncore Crash Log Dump Failed     
+0x1B001,Get Global Temperature        
+0x1B002,Get Memory Temperature        
+0x1B003,Get Thermal Margin        
+0x1B004,Get TJMax         
+0x1B005,Get GPU Temperature        
+0x1B006,Get SOC Sensor Temperature       
+0x1B007,Get Memory Sensor Temperature       
+0x1B008,Get Ambient Sensor Temperature       
+0x1B009,Get VR Sensor Temperature       
+0x1B00A,HVM Thermal Test        
+0x1B00B,SOC Min Max Temp Failed      
+0x1B00C,Temperature Config Fail        
+0x1C001,Get GT Voltage        
+0x1C002,Set GT Voltage        
+0x1D001,DirectX9 Not Found        
+0x1D002,DirectX10 Not Found        
+0x1D003,DirectX11 Not Found        
+0x1D004,DirectX12 Not Found        
+0x1D005,Vulkan Not Found        
+0x1D006,D3D11Workload Draw         
+0x1D007,D3D11Workload UpdateBuffer         
+0x1D008,D3D12Workload DrawDT         
+0x1D009,D3D12Workload DrawDTT         
+0x1D00A,D3D12Workload Copy         
+0x1D00B,D3D12Workload CBV         
+0x1D00C,VulkanWorkload ComputeInstrate         
+0x1D00D,OpenGLWorkload DrawElement         
+0x1D00E,Failed to run T860       
+0x1D00F,Perf T850 File Search Failed      
+0x1D010,T860 Get Current Directory Failed      
+0x1D011,DGDiagWorkload Failed.         
+0x1D012,Failed to Start WorkLoad.       
+0x1D013,Failed to Stop WorkLoad.       
+0x1E001,CSC Late Binding Status 4ID Mismatch     
+0x1E002,CSC Late Binding Status ARB Failure     
+0x1E003,CSC Late Binding Status General Error     
+0x1E004,CSC Late Binding Status Invalid Params     
+0x1E005,CSC Late Binding Status Invalid Signature     
+0x1E006,CSC Late Binding Status Invalid Payload     
+0x1E007,CSC Late Binding Status Timeout      
+0x1F001,TDRCheck Failed         
+0x1F002,TDRCheck Invalid AppType        
+0x20001,Algo Not Found        
+0x20002,Get ProcessorID Fail        
+0x20003,Read MSR Failed        
+0x20004,Get BaseClk Failed        
+0x20005,Turbo Check Failed        
+0x20006,GetMCHBARAddress Failed         
+0x20007,Read MMIO Failed        
+0x20008,Write MMIO Failed        
+0x20009,PCIe Read Failed        
+0x2000A,Invalid Value         
+0x2000B,OS Get Failed        
+0x2000C,Get System Monitor Failed       
+0x2000D,OS Get CPU Utilization Failed      
+0x2000E,OS Get ClockSpeed Failed       
+0x2000F,OS Get C Disk Utilization Failed     
+0x20010,OS Get Network Utilization Failed      
+0x20011,Get CPU Reg Failed       
+0x20012,RegOpenKeyEx Fail         
+0x20013,RegQueryValueEx Fail         
+0x20014,RegCreateKeyExA Fail         
+0x20015,Get Freq Fail        
+0x20016,Get Engine Fail        
+0x20017,Get Temp Fail        
+0x20018,Unexpected LTSSM         
+0x21001,PDH OpenQuery Failed        
+0x21002,PDH AddCounter Failed        
+0x21003,PDH QueryData Failed        
+0x21004,PDH GetFormattedValue Failed        
+0x21005,PDH EnumObjectItems Failed        
+0x21006,Init COM Failed        
+0x21007,Init Security Failed        
+0x21008,IWbemLocator Failed         
+0x21009,Proxy Blanket Failure        
+0x2100A,Query Memory Fail.        
+0x2100B,Sys Config Info Fail.       
+0x22000,PMT Init Failure.        

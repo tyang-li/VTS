@@ -1,0 +1,160 @@
+[
+  {
+    "comment": "GPU Health Test - Basic GPU health check with XPUM monitoring",
+    "tn": 1,
+    "rep": 1,
+    "mt":"xpum",
+    "cs":"None",
+    "d": true
+  },
+  {
+    "comment": "GPU Diagnostic Test - Comprehensive diagnostic (long level) XPUM monitoring",
+    "tn": 2,
+    "rep": 1,
+    "mt":"xpum",
+    "cs":"None",
+    "d": true,
+    "l": "long"
+  },
+  {
+    "comment": "PCIe Bandwidth Test - with XPUM monitoring, no CPU stress",
+    "tn": 3,
+    "rep": 1,
+    "mt":"xpum",
+    "cs":"None",  
+    "d": true
+  },
+  {
+    "comment": "PCIe Reset Test - FLR",
+    "tn": 5,
+    "rep": 1,
+    "mt":"None",
+    "cs":"None",
+    "pcie_downgrade": true,
+    "d": true,
+    "rt":"flr",
+    "iterations":20
+  },
+  {
+    "comment": "PCIe Reset Test - SBR",
+    "tn": 5,
+    "rep": 1,
+    "mt":"None",
+    "cs":"None",
+    "pcie_downgrade": true,
+    "d": true,
+    "rt":"sbr",
+    "iterations":20
+  },
+  {
+    "comment": "PCIe Reset Test - Link Enable/Disable",
+    "tn": 5,
+    "rep": 1,
+    "mt":"None",
+    "cs":"None",
+    "pcie_downgrade": true,
+    "d": true,
+    "rt":"linkdisable",
+    "iterations":20
+  },
+  {
+    "comment": "PCIe Reset Test - Link Speed Change",
+    "tn": 5,
+    "rep": 1,
+    "mt":"None",
+    "cs":"None",
+    "pcie_downgrade": true,
+    "d": true,
+    "rt":"linkchange",
+    "iterations":20
+  },
+  {
+    "comment": "PCIe Reset Test - Link Retrain",
+    "tn": 5,
+    "rep": 1,
+    "mt":"None",
+    "cs":"None",
+    "d": true,
+    "pcie_downgrade": true,
+    "rt":"retrain",
+    "iterations":20
+  },
+  {
+    "comment": "Memory Bandwidth Test - Memory performance test with XPUM monitoring",
+    "tn": 6,
+    "rep": 1,
+    "mt":"xpum",
+    "cs":"None",   
+    "d": true
+  },
+  {
+    "comment": "Memory Stress Test - 300 second memory stress test, no CPU stress",
+    "tn": 7,
+    "rep": 1,
+    "mt":"xpum",
+    "cs":"None",   
+    "d": true,
+    "testtime":300
+  },
+  {
+    "comment": "Power Stress Test - 900 seconds power stress test with CPU stress",
+    "tn": 8,
+    "rep": 1,
+    "mt":"xpum",
+    "cs":"stress-ng",
+    "d": true,
+    "testtime":900
+  },
+  {
+    "comment": "EDP Stress Test - 900 seconds edp stress test with CPU stress",
+    "tn": 9,
+    "rep": 1,
+    "mt":"xpum",
+    "cs":"stress-ng",
+    "d": true,
+    "testtime":900
+  },
+  {
+    "comment": "vLLM Test",
+    "tn": 11,
+    "rep": 1,
+    "mt":"None",
+    "cs":"None",
+    "d": true,
+    "model": "meta-llama/Meta-Llama-3-8B",
+    "tp": 1,
+    "max-concurrency": 16,
+    "input-len": 128,
+    "output-len": 128
+  },
+  {
+    "comment": "MLPerf Test",
+    "tn": 12,
+    "rep": 1,
+    "mt":"xpum",
+    "cs":"None",
+    "d": true,
+    "y": true,
+    "docker_image": "intel/intel-optimized-pytorch:mlperf-inference-6.0-llama_xpu",
+    "data_dir": "/home/{user}/data",
+    "model_dir": "/home/{user}/model/.llama/checkpoints",
+    "model_type": "llama3_1-8b",
+    "scenario": "Offline",
+    "mode": "Performance"
+    
+  },
+  {
+    "comment": "PCIe Margin Test - Basic PCIe margin testing, no CPU stress",
+    "tn": 4,
+    "rep": 1,
+    "mt":"None",
+    "cs":"None",
+    "pcie_downgrade": true,
+    "d": true,
+    "rn": 6
+  },
+  {
+    "comment": "Collect Logs - Generate HTML summary and zip all log files",
+    "tn": "c"
+  }
+]

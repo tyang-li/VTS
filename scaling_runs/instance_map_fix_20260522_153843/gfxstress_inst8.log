@@ -1,0 +1,39 @@
+
+----------------------------------------------------------------------------
+		 DGDiagTool - 3.10.2 2
+		 Build Date : Feb  4 2026, 05:16:39 
+----------------------------------------------------------------------------
+Test parameters are taken from config file: dgdiagconfig.bin
+
+Command: SYSTEM.UTIL.GFXStress
+----------------------------------------------------------------------------
+PARAM NAME               : PARAM TYPE   PARAM INPUT    :Param Description
+----------------------------------------------------------------------------
+inst                     : STRING       8,             :GPU Device instances, multiple DG as: 1,2
+interface                : STRING       Vulkan         :Interface: DirectX/OpenGL/Vulkan
+testtime                 : DECIMAL               20    :Run Time
+height                   : DECIMAL             1440    :Render height resolution for the workload
+width                    : DECIMAL             2560    :Render width resolution for the workload
+bck_noise_size           : DECIMAL             2048    :Background noise texture size
+bck_intensity            : DECIMAL               20    :Background noise texture intensity
+shell_count              : DECIMAL              256    :Fur shell count
+fur_tex_size             : DECIMAL             1024    :Fur texture size
+major_radius             : DECIMAL               31    :Torus major radius
+minor_radius             : DECIMAL               16    :Torus minor radius
+enbl_log                 : DECIMAL                0    :Enable/Disable logging
+enbl_dyn_res             : DECIMAL                0    :Enable/Disable dynamic resolution
+enbl_bck_comp            : DECIMAL                1    :Enable/Disable background compute
+comp_max_wrkgrp          : DECIMAL            32768    :Max compute workgroups
+headless                 : DECIMAL                1    :Run workload in Headless mode
+
+
+GFX stress test started....
+
+
+GFX stress test completed successfully
+
+Start Time  : 22:17:20:07:582
+End Time    : 22:17:20:28:712
+Test Time   : 00:00:00:21:130
+Result     : PASS
+Error Code : 0x0

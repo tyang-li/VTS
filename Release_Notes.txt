@@ -1,0 +1,120 @@
+Intel® GPU Verification Test Suite
+Document Number 873489
+
+
+Release Date: 04/06/2026
+Copyright (C) 2026, Intel Corporation. All rights reserved.
+Intel Confidential
+
+
+
+
+
+----------------------------------------------------------------------------------------------
+Version: 0.6
+----------------------------------------------------------------------------------------------
+New Features / Improvements
+----------------------------------------------------------------------------------------------
+    - Added Test 11: vLLM Test - Large Language Model inference testing with Docker containers
+    - Added Test 12: ML Perf Test - MLPerf benchmark testing for machine learning inference
+    - Added comprehensive system pre-flight checks framework (systemChecker.py):
+        * OS platform validation, Python version checks, required command verification
+        * Intel GPU driver detection (xe/i915)  
+        * Memory validation with B70-aware requirements (2x GPU memory) using lsmem
+        * RAM speed validation (≥4800 MHz DDR5 requirement)
+        * Disk space, system load, and leftover process cleanup checks
+        * PCIe alignment validation with misalignment detection
+        * Color-coded output with user interaction for warning-level failures
+    - Added PCIe downgrade disable functionality (-pcie_downgrade parameter):
+        * Global parameter to control PCIe link downgrade behavior before test execution
+        * OS capability checking via Linux sysfs interface
+        * Defaults to True for LMT and Reset tests, configurable for all others
+    - Enhanced LMT test with receiver number tracking in test names and log files
+    - Added LMT support for Python 3.10, 3.12 and 3.13
+    - Added GPU live monitoring command-line option (--live_mon) 
+    - Added soft reset option which is an OS alternative to hard S5 resets from the BMC.
+    - Improved unbind and bind device consistency during reset operations
+    - Added timestamps to reset test log files for better tracking
+    - Enhanced status messages for clearer test progression feedback on reset tests
+    - Enhanced error handling and exception management across all test components
+    - Added stop on error support (-stop_on_error parameter):
+        * Halts test sequence on first failure and prompts the user to collect debug logs
+        * Supported in both interactive and config file execution modes
+    - Added sensitive argument redaction in test output:
+        * Tokens, passwords, secrets, and keys are masked in printed arguments
+    - Upgraded the MLPerf inference Docker image from v5.1 to v6.0
+    - Upgraded DGDiag diagnostic tool to version 3.10.2
+    
+----------------------------------------------------------------------------------------------
+Bug Fixes
+----------------------------------------------------------------------------------------------
+    - Fixed Reset Test issues:
+        * Fixed SBR, linkchange and linkdisable implementations.
+    - Fixed permission-related issues:
+        * Resolved script execution permission problems across test components
+        * Fixed file access and validation script permissions
+    - Fixed process cleanup and leftover detection:
+        * Improved cleanup of stress-ng, ptat, and other background processes
+        * Enhanced emergency cleanup procedures with better process targeting
+        * Added robust termination verification mechanisms
+    - Resolved log collection and validation path issues
+
+----------------------------------------------------------------------------------------------        
+Validation Information
+----------------------------------------------------------------------------------------------
+    - Supported GPU: Intel Arc B60/B70 Graphics (BMG platform)
+    - Supported OS: Linux (Ubuntu 25.10)
+
+
+
+
+
+----------------------------------------------------------------------------------------------
+Version: 0.5
+----------------------------------------------------------------------------------------------
+New Features / Improvements
+----------------------------------------------------------------------------------------------
+    - Initial release supporting comprehensive Intel GPU validation testing.
+    - Available Tests:
+        - Test 1: GPU Health Check
+        - Test 2: GPU Environment and Device Check
+        - Test 3: PCIe Bandwidth Test    
+        - Test 4: PCIe Lane Margin Test (LMT)
+        - Test 5: Reset Test (FLR, warm, cold, link retrain, link enable/disable, custom)    
+        - Test 6: Memory Bandwidth Test
+        - Test 7: Memory Stress Test
+        - Test 8: Power and Thermal Stress Test
+        - Test 9: Excursion Design Power Stress Test
+    - Debug Script enabled
+    - Log collection / HTML Results Summarizing capabilities enabled.
+    - GPU and CPU parameters monitoring capability.
+    - CPU Stress capability enabled.
+    - Menu, command line and config file based executions enabled.
+----------------------------------------------------------------------------------------------
+Bug Fixes
+----------------------------------------------------------------------------------------------
+    - None.
+----------------------------------------------------------------------------------------------        
+Validation Information
+----------------------------------------------------------------------------------------------
+    - Supported GPU: Intel Arc B60/B70 Graphics (BMG platform)
+    - Supported OS: Linux (Ubuntu 25.10)
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------
+LEGAL / DISCLAIMERS
+----------------------------------------------------------------------------------------------------------
+
+INTEL CONFIDENTIAL
+Copyright (C) 2026, Intel Corporation.  All rights reserved.
+
+Intel Corporation assumes no responsibility for errors or omissions in this
+document, nor does Intel make any commitment to update the information
+contained herein.
+
+* Other product and corporate names may be trademarks of other companies and
+  are used only for explanation and to the owners' benefit, without intent to
+  infringe.
